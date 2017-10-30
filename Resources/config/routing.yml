@@ -1,0 +1,3 @@
+hristonev_sport_monks_client_homepage:
+    path:     /
+    defaults: { _controller: HristonevSportMonksClientBundle:Default:index }
