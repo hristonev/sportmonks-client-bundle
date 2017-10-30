@@ -1,0 +1,20 @@
+{
+    "name": "hristonev/sportmonks-client-bundle",
+    "license": "MIT",
+    "type": "symfony-bundle",
+    "description": "Easily talk to an SportMonks API in Symfony",
+    "authors": [
+        {
+            "name": "Dimitar Hristonev",
+            "email": "hristonev@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "SportMonks\\API\\": "src/"
+        }
+    }
+}
