@@ -14,6 +14,8 @@ use GuzzleHttp\HandlerStack;
 use SportMonks\API\Middleware\RetryHandler;
 use SportMonks\API\Resources\Continents;
 use SportMonks\API\Resources\Countries;
+use SportMonks\API\Resources\Leagues;
+use SportMonks\API\Resources\Seasons;
 use SportMonks\API\Traits\Utility\InitTrait;
 use SportMonks\API\Utilities\Auth;
 
@@ -23,6 +25,8 @@ use SportMonks\API\Utilities\Auth;
  *
  * @method Continents continents()
  * @method Countries countries()
+ * @method Leagues leagues()
+ * @method Seasons seasons()
  */
 class HTTPClient extends HTTP
 {
@@ -107,7 +111,9 @@ class HTTPClient extends HTTP
     {
         return [
             'continents' => Continents::class,
-            'countries' => Countries::class
+            'countries' => Countries::class,
+            'leagues' => Leagues::class,
+            'seasons' => Seasons::class
         ];
     }
 

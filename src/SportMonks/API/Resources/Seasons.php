@@ -13,7 +13,7 @@ use SportMonks\API\Traits\Resource\Find;
 use SportMonks\API\Traits\Resource\FindAll;
 use SportMonks\API\Traits\Utility\InitTrait;
 
-class Countries extends ResourceAbstract
+class Seasons extends ResourceAbstract
 {
     use InitTrait;
 
@@ -25,8 +25,16 @@ class Countries extends ResourceAbstract
         find as traitFind;
     }
 
-    public function find($id, array $params = [])
+    public function find($id, $includeResults = false, array $params = [])
     {
+        if($includeResults){
+            $params = array_merge($params, [
+                'query' => [
+                    'include' => 'results'
+                ]
+            ]);
+        }
+
         self::$response = $this->traitFind($id, $params);
 
         return self::$response->data;

@@ -45,3 +45,13 @@ do{
 }while($client->countries()->nextPage());
 print_r($data);
 ```
+
+## Reference
+
+Basic methods find({id}), findAll(), nextPage(). nextPage() is used on paginated response.
+
+- continents
+- countries
+- leagues
+- seasons
+    - find(id, true) `include results`

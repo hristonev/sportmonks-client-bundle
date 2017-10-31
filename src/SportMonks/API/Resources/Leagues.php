@@ -13,7 +13,7 @@ use SportMonks\API\Traits\Resource\Find;
 use SportMonks\API\Traits\Resource\FindAll;
 use SportMonks\API\Traits\Utility\InitTrait;
 
-class Countries extends ResourceAbstract
+class Leagues extends ResourceAbstract
 {
     use InitTrait;
 
