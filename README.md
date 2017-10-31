@@ -1,4 +1,7 @@
-# SportMonks API Client Library
+SportMonks API Client Library
+=============================
+
+[![Build Status](https://travis-ci.org/hristonev/sportmonks-client-bundle.svg?branch=master)](https://travis-ci.org/hristonev/sportmonks-client-bundle)
 
 ## API Version support
 
