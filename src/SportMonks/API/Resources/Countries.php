@@ -36,11 +36,11 @@ class Countries extends ResourceAbstract
     {
         self::$response = $this->traitFindAll($params);
 
-        return self::$response->data;
+        return isset(self::$response->data) ? self::$response->data : null;
     }
 
     public static function getMetaData()
     {
-        return self::$response->meta ?? null;
+        return isset(self::$response->meta) ? self::$response->meta : null;
     }
 }
