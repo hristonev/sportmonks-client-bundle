@@ -16,5 +16,11 @@
         "psr-0": {
             "SportMonks\\API\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": { "SportMonks\\API\\Tests\\": "tests/" }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8"
     }
 }
