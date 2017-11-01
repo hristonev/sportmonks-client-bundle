@@ -9,6 +9,8 @@ This API Client supports SportMonks v2.0.
 
 ## Requirements
 
+- PHP 5.6 or higher
+
 ### Installation
 
 `composer require hristonev/sportmonks-client-bundle`
