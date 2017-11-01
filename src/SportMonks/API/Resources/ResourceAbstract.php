@@ -11,13 +11,13 @@ namespace SportMonks\API\Resources;
 
 use SportMonks\API\Exceptions\RouteException;
 use SportMonks\API\HTTPClient;
-use SportMonks\API\Traits\Resource\NextPage;
 
+/**
+ * Class ResourceAbstract
+ * @package SportMonks\API\Resources
+ */
 abstract class ResourceAbstract
 {
-
-    use NextPage;
-
     /**
      * @var HTTPClient
      */
@@ -32,6 +32,11 @@ abstract class ResourceAbstract
      * @var array
      */
     protected $routes;
+
+    /**
+     * @var array
+     */
+    protected $routeParameters = [];
 
     /**
      * @var \stdClass
@@ -62,7 +67,10 @@ abstract class ResourceAbstract
         return $resourceName;
     }
 
-    public static function getValidEndpoint()
+    /**
+     * @return array
+     */
+    public static function getValidEndpoints()
     {
         return [];
     }
@@ -90,7 +98,7 @@ abstract class ResourceAbstract
 
         $route = $this->routes[$name];
 
-        $substitutions = array_merge($params, $this->getAdditionalRouteParams());
+        $substitutions = array_merge($params, $this->getRouteParameters());
         foreach ($substitutions as $name => $value) {
             if (is_scalar($value)) {
                 $route = str_replace('{' . $name . '}', $value, $route);
@@ -98,5 +106,29 @@ abstract class ResourceAbstract
         }
 
         return $route;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRouteParameters()
+    {
+        return $this->routeParameters;
+    }
+
+    /**
+     * @param array $routeParameters
+     */
+    public function setRouteParameters(array $routeParameters)
+    {
+        $this->routeParameters = $routeParameters;
+    }
+
+    /**
+     * @return null | array | \stdClass
+     */
+    public static function getMetaData()
+    {
+        return isset(self::$response->meta) ? self::$response->meta : null;
     }
 }

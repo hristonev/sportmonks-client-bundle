@@ -21,16 +21,11 @@ trait Find
      * @param array $params
      * @param string $route
      *
-     * @return null|\stdClass
+     * @return null | array | \stdClass
      * @throws MissingParameterException
-     * @internal param string $routeKey
      */
     public function find($id = null, array $params = [], $route = __FUNCTION__)
     {
-        if(empty($id)){
-            throw new MissingParameterException(__METHOD__, ['id']);
-        }
-
         try {
             $route = $this->getRoute($route, ['id' => $id]);
         } catch (RouteException $e) {
@@ -38,13 +33,19 @@ trait Find
                 $this->resourceName = $this->getResourceNameFromClassName();
             }
 
+            if(empty($id)){
+                throw new MissingParameterException(__METHOD__, ['id']);
+            }
+
             $route = $this->resourceName. '/'. $id;
             $this->setRoute(__FUNCTION__, $route);
         }
 
-        return $this->client->get(
+        self::$response = $this->client->get(
             $route,
             $params
         );
+
+        return isset(self::$response->data) ? self::$response->data : null;
     }
 }

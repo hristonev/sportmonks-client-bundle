@@ -2,9 +2,9 @@
 
 namespace SportMonks\API\Middleware;
 
-use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RetryMiddleware;
+use SportMonks\API\Exceptions\ConnectException;
 
 class RetryHandler
 {

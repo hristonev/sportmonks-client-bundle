@@ -24,7 +24,7 @@ trait InitTrait
      * @param $name
      * @param $arguments
      *
-     * @return ChainedParametersTrait
+     * @return mixed
      * @throws \Exception
      */
     public function __call($name, $arguments)

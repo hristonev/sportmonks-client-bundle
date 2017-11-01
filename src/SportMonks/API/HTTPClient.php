@@ -12,10 +12,19 @@ namespace SportMonks\API;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\HandlerStack;
 use SportMonks\API\Middleware\RetryHandler;
+use SportMonks\API\Resources\Bookmakers;
 use SportMonks\API\Resources\Continents;
 use SportMonks\API\Resources\Countries;
+use SportMonks\API\Resources\Fixtures;
+use SportMonks\API\Resources\Head2Head;
+use SportMonks\API\Resources\Highlights;
 use SportMonks\API\Resources\Leagues;
+use SportMonks\API\Resources\LiveScores;
+use SportMonks\API\Resources\Players;
+use SportMonks\API\Resources\Rounds;
 use SportMonks\API\Resources\Seasons;
+use SportMonks\API\Resources\Teams;
+use SportMonks\API\Resources\Venues;
 use SportMonks\API\Traits\Utility\InitTrait;
 use SportMonks\API\Utilities\Auth;
 
@@ -27,6 +36,15 @@ use SportMonks\API\Utilities\Auth;
  * @method Countries countries()
  * @method Leagues leagues()
  * @method Seasons seasons()
+ * @method Fixtures fixtures()
+ * @method LiveScores liveScores()
+ * @method Highlights highlights()
+ * @method Teams teams()
+ * @method Head2Head head2Head()
+ * @method Venues venues()
+ * @method Bookmakers bookmakers()
+ * @method Players players()
+ * @method Rounds rounds()
  */
 class HTTPClient extends HTTP
 {
@@ -113,7 +131,16 @@ class HTTPClient extends HTTP
             'continents' => Continents::class,
             'countries' => Countries::class,
             'leagues' => Leagues::class,
-            'seasons' => Seasons::class
+            'seasons' => Seasons::class,
+            'fixtures' => Fixtures::class,
+            'liveScores' => LiveScores::class,
+            'highlights' =>Highlights::class,
+            'teams' => Teams::class,
+            'head2Head' => Head2Head::class,
+            'venues' => Venues::class,
+            'bookmakers' => Bookmakers::class,
+            'players' => Players::class,
+            'rounds' => Rounds::class
         ];
     }
 
@@ -134,7 +161,7 @@ class HTTPClient extends HTTP
             $this->apiBasePath = self::BASE_PATH. '/';
         }
 
-        return $this->apiBasePath. '/v'. self::API_VERSION. '/';
+        return $this->apiBasePath. 'v'. self::API_VERSION. '/';
     }
 
     /**

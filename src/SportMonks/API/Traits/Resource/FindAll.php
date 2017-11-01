@@ -19,10 +19,7 @@ trait FindAll
      * @param array $params
      * @param string $route
      *
-     * @return null|\stdClass
-     *
-     * @internal param string $routeKey
-     *
+     * @return null | array | \stdClass
      */
     public function findAll(array $params = [], $route = __FUNCTION__)
     {
@@ -39,9 +36,11 @@ trait FindAll
             $this->setRoute(__FUNCTION__, $route);
         }
 
-        return $this->client->get(
+        self::$response = $this->client->get(
             $route,
             $params
         );
+
+        return isset(self::$response->data) ? self::$response->data : null;
     }
 }

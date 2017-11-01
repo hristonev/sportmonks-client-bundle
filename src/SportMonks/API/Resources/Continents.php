@@ -11,29 +11,20 @@ namespace SportMonks\API\Resources;
 
 use SportMonks\API\Traits\Resource\Find;
 use SportMonks\API\Traits\Resource\FindAll;
+use SportMonks\API\Traits\Resource\NextPage;
 use SportMonks\API\Traits\Utility\InitTrait;
 
+/**
+ * Class Continents
+ * @package SportMonks\API\Resources
+ */
 class Continents extends ResourceAbstract
 {
     use InitTrait;
 
-    use FindAll {
-        findAll as traitFindAll;
-    }
+    use FindAll;
 
-    use Find {
-        find as traitFind;
-    }
+    use Find;
 
-    public function findAll(array $params = [])
-    {
-        self::$response = $this->traitFindAll($params);
-
-        return isset(self::$response->data) ? self::$response->data : null;
-    }
-
-    public static function getMetaData()
-    {
-        return isset(self::$response->meta) ? self::$response->meta : null;
-    }
+    use NextPage;
 }

@@ -11,36 +11,20 @@ namespace SportMonks\API\Resources;
 
 use SportMonks\API\Traits\Resource\Find;
 use SportMonks\API\Traits\Resource\FindAll;
+use SportMonks\API\Traits\Resource\NextPage;
 use SportMonks\API\Traits\Utility\InitTrait;
 
+/**
+ * Class Countries
+ * @package SportMonks\API\Resources
+ */
 class Countries extends ResourceAbstract
 {
     use InitTrait;
 
-    use FindAll {
-        findAll as traitFindAll;
-    }
+    use FindAll;
 
-    use Find {
-        find as traitFind;
-    }
+    use Find;
 
-    public function find($id, array $params = [])
-    {
-        self::$response = $this->traitFind($id, $params);
-
-        return self::$response->data;
-    }
-
-    public function findAll(array $params = [])
-    {
-        self::$response = $this->traitFindAll($params);
-
-        return isset(self::$response->data) ? self::$response->data : null;
-    }
-
-    public static function getMetaData()
-    {
-        return isset(self::$response->meta) ? self::$response->meta : null;
-    }
+    use NextPage;
 }

@@ -10,21 +10,15 @@ namespace SportMonks\API\Resources;
 
 
 use SportMonks\API\Traits\Resource\Find;
-use SportMonks\API\Traits\Resource\FindAll;
-use SportMonks\API\Traits\Resource\NextPage;
 use SportMonks\API\Traits\Utility\InitTrait;
 
 /**
- * Class Leagues
+ * Class Rounds
  * @package SportMonks\API\Resources
  */
-class Leagues extends ResourceAbstract
+class Rounds extends ResourceAbstract
 {
     use InitTrait;
 
-    use FindAll;
-
     use Find;
-
-    use NextPage;
 }

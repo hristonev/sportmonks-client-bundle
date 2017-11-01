@@ -15,10 +15,10 @@ use SportMonks\API\Traits\Resource\NextPage;
 use SportMonks\API\Traits\Utility\InitTrait;
 
 /**
- * Class Leagues
+ * Class Bookmakers
  * @package SportMonks\API\Resources
  */
-class Leagues extends ResourceAbstract
+class Bookmakers extends ResourceAbstract
 {
     use InitTrait;
 
