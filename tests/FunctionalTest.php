@@ -26,6 +26,11 @@ class FunctionalTest extends \PHPUnit_Framework_TestCase
     /**
      * @var integer
      */
+    private static $teamId;
+
+    /**
+     * @var integer
+     */
     private static $fixtureId;
 
     /**
@@ -141,14 +146,24 @@ class FunctionalTest extends \PHPUnit_Framework_TestCase
         echo "Teams ". count($collection). "\n";
         $data = current($collection);
         if(is_object($data)){
+            self::$teamId = $data->id;
             $this->client->teams()->find($data->id);
             $this->client->teams()->find($data->id, true);
         }
     }
 
+    public function testSquad()
+    {
+        $collection = $this->client->squad()->getBySeasonAndTeam(self::$seasonId, self::$teamId);
+        echo "Squad players ". count($collection). "\n";
+        $this->printLimit();
+    }
+
     public function testFixtures()
     {
-        $collection = $this->client->fixtures()->between()->period(new \DateTime('yesterday'), new \DateTime('today'));
+        $startDate = new \DateTime();
+        $startDate->sub(new \DateInterval('P10D')); // Get fixtures 10 days ago.
+        $collection = $this->client->fixtures()->between()->period($startDate, new \DateTime('today'));
         $this->client->fixtures()->date()->day(new \DateTime('yesterday'));
         echo "Fixtures ". count($collection). "\n";
         $data = current($collection);

@@ -93,3 +93,5 @@ Basic methods find({id}), findAll(), nextPage(). nextPage() is used on paginated
 - bookmakers
 - players
     - `Players does not support findAll method.`
+- squad
+    - getBySeasonAndTeam(season_id, team_id) `No other methods`
