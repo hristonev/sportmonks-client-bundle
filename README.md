@@ -55,6 +55,24 @@ print_r($data);
 
 ## Reference
 
+### Include data
+``` php
+$seasonId = 6361;
+$teamId = 85;
+$client->squad()->getBySeasonAndTeam(
+    $seasonId,
+    $teamId,
+    [
+        'query' => [
+            'include' => 'player,position'
+        ]
+    ]
+)
+```
+Above example, includes player info and player-position info into collection.
+[Check](https://www.sportmonks.com/soccer/documentation/v2.0/items/team-squads/62) for more query parameters.
+
+### Basic methods `endpoints`
 Basic methods find({id}), findAll(), nextPage(). nextPage() is used on paginated response.
 
 - continents
