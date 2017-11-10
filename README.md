@@ -70,7 +70,7 @@ $client->squad()->getBySeasonAndTeam(
 )
 ```
 Above example, includes player info and player-position info into collection.
-[Check](https://www.sportmonks.com/soccer/documentation/v2.0/items/team-squads/62) for more query parameters.
+[Check](https://www.sportmonks.com/soccer/documentation/v2.0/items/includes-sortinglimiting/48) for more query parameters.
 
 ### Basic methods `endpoints`
 Basic methods find({id}), findAll(), nextPage(). nextPage() is used on paginated response.
