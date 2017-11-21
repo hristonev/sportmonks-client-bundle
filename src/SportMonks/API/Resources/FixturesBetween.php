@@ -10,6 +10,7 @@ namespace SportMonks\API\Resources;
 
 
 use SportMonks\API\Traits\Resource\Find;
+use SportMonks\API\Traits\Resource\NextPage;
 use SportMonks\API\Traits\Utility\InitTrait;
 
 /**
@@ -23,6 +24,8 @@ class FixturesBetween extends ResourceAbstract
     use Find {
         find as traitFind;
     }
+
+    use NextPage;
 
     /**
      * @param \DateTime $from
