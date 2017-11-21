@@ -47,6 +47,7 @@ class FixturesBetween extends ResourceAbstract
             'to' => $to->format('Y-m-d'),
             'team_id' => $teamId
         ]);
+        $params = array_merge($params, self::$param);
 
         return $this->traitFind(null, $params, 'fixtures_period');
     }
