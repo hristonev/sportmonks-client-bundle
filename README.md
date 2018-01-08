@@ -21,7 +21,8 @@ This API Client supports SportMonks v2.0.
 // Bootstrap
 require 'vendor/autoload.php';
 
-use SportMonks\API\HttpClient as SportMonksAPI;
+use SportMonks\API\HTTPClient as SportMonksAPI;
+use SportMonks\API\Utilities\Auth;
 
 // Default values. Can be initialized without arguments.
 $scheme = 'https';
