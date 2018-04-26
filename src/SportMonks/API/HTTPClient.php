@@ -13,6 +13,7 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\HandlerStack;
 use SportMonks\API\Middleware\RetryHandler;
 use SportMonks\API\Resources\Bookmakers;
+use SportMonks\API\Resources\Coaches;
 use SportMonks\API\Resources\Continents;
 use SportMonks\API\Resources\Countries;
 use SportMonks\API\Resources\Fixtures;
@@ -47,6 +48,7 @@ use SportMonks\API\Utilities\Auth;
  * @method Players players()
  * @method Rounds rounds()
  * @method Squad squad()
+ * @method Coaches coaches()
  */
 class HTTPClient extends HTTP
 {
@@ -143,7 +145,8 @@ class HTTPClient extends HTTP
             'bookmakers' => Bookmakers::class,
             'players' => Players::class,
             'rounds' => Rounds::class,
-            'squad' => Squad::class
+            'squad' => Squad::class,
+            'coaches' => Coaches::class
         ];
     }
 
