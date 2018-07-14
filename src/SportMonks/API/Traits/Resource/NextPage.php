@@ -20,7 +20,7 @@ trait NextPage
      * @return boolean
      * @throws MissingParameterException
      */
-    public function nextPage()
+    public function nextPage($extra_params)
     {
         if(!property_exists(self::$response->meta, 'pagination')){
             return false;
@@ -31,12 +31,21 @@ trait NextPage
         if($nextPage > $pagination->total_pages){
             return false;
         }
-
-        self::$param = array_merge(self::$param, [
+		
+	// Default Params
+	$params = [
             'query' => [
                 'page' => $nextPage
             ]
-        ]);
+        ];
+		
+	// Merge new params in the call if exist
+	if(!empty($extra_params))
+	{
+		$params['query'] = array_merge($extra_params['query'], $params['query']);
+	}
+
+        self::$param = array_merge(self::$param, $params);
 
         return true;
     }
