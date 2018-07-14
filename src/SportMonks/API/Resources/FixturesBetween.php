@@ -21,11 +21,11 @@ class FixturesBetween extends ResourceAbstract
 {
     use InitTrait;
 
+    use NextPage;
+
     use Find {
         find as traitFind;
     }
-
-    use NextPage;
 
     /**
      * @param \DateTime $from
