@@ -11,6 +11,7 @@ namespace SportMonks\API\Resources;
 
 use SportMonks\API\Traits\Resource\Find;
 use SportMonks\API\Traits\Resource\FindAll;
+use SportMonks\API\Traits\Resource\NextPage;
 use SportMonks\API\Traits\Utility\InitTrait;
 
 /**
@@ -23,6 +24,8 @@ use SportMonks\API\Traits\Utility\InitTrait;
 class Fixtures extends ResourceAbstract
 {
     use InitTrait;
+
+    use NextPage;
 
     use Find {
         find as traitFind;
