@@ -20,5 +20,22 @@ class Rounds extends ResourceAbstract
 {
     use InitTrait;
 
-    use Find;
+    use Find {
+        find as traitFind;
+    }
+	
+	/**
+     * @param integer $seasonId
+     * @param array $params
+     * @return array|null
+     */
+	public function getBySeason($seasonId, $params = [])
+	{
+		$this->setRoute('round_by_season', 'rounds/season/{season_id}');
+			$this->setRouteParameters([
+				'season_id' => $seasonId
+			]);
+	
+			return $this->traitFind(null, $params, 'round_by_season');
+	}
 }
