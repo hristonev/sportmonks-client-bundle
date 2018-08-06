@@ -25,6 +25,7 @@ use SportMonks\API\Resources\Players;
 use SportMonks\API\Resources\Rounds;
 use SportMonks\API\Resources\Seasons;
 use SportMonks\API\Resources\Squad;
+use SportMonks\API\Resources\Stages;
 use SportMonks\API\Resources\Teams;
 use SportMonks\API\Resources\Venues;
 use SportMonks\API\Traits\Utility\InitTrait;
@@ -46,6 +47,7 @@ use SportMonks\API\Utilities\Auth;
  * @method Venues venues()
  * @method Bookmakers bookmakers()
  * @method Players players()
+ * @method Stages stages()
  * @method Rounds rounds()
  * @method Squad squad()
  * @method Coaches coaches()
