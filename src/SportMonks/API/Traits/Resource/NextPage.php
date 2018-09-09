@@ -17,10 +17,10 @@ trait NextPage
     /**
      * List all of this resource
      *
+     * @param $extra_params
      * @return boolean
-     * @throws MissingParameterException
      */
-    public function nextPage($extra_params)
+    public function nextPage($extra_params = [])
     {
         if(!property_exists(self::$response->meta, 'pagination')){
             return false;
