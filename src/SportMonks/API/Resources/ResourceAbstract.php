@@ -54,6 +54,12 @@ abstract class ResourceAbstract
         }
     }
 
+    public function removeCache()
+    {
+        self::$response = null;
+        self::$param = [];
+    }
+
     protected function getResourceNameFromClassName()
     {
         $classNamespaceName = get_class($this);
