@@ -69,7 +69,7 @@ class HTTP
      */
     public function getRateLimit()
     {
-        return array_key_exists('X-RateLimit-Limit', $this->requestHeaders) ? (int)current($this->requestHeaders['X-RateLimit-Limit']) : null;
+        return is_array($this->requestHeaders) && array_key_exists('X-RateLimit-Limit', $this->requestHeaders) ? (int)current($this->requestHeaders['X-RateLimit-Limit']) : null;
     }
 
     /**
@@ -77,6 +77,6 @@ class HTTP
      */
     public function getRateLimitRemaining()
     {
-        return array_key_exists('X-RateLimit-Remaining', $this->requestHeaders) ? (int)current($this->requestHeaders['X-RateLimit-Remaining']) : null;
+        return is_array($this->requestHeaders) && array_key_exists('X-RateLimit-Remaining', $this->requestHeaders) ? (int)current($this->requestHeaders['X-RateLimit-Remaining']) : null;
     }
 }
