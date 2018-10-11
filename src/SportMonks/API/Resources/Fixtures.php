@@ -19,6 +19,7 @@ use SportMonks\API\Traits\Utility\InitTrait;
  * @package SportMonks\API\Resources
  *
  * @method FixturesBetween between()
+ * @method FixturesMulti multi()
  * @method FixturesDate date()
  */
 class Fixtures extends ResourceAbstract
@@ -133,6 +134,7 @@ class Fixtures extends ResourceAbstract
     {
         return array_merge(parent::getValidEndpoints(), [
             'between' => FixturesBetween::class,
+            'multi' => FixturesMulti::class,
             'date' => FixturesDate::class
         ]);
     }
