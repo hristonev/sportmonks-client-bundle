@@ -10,7 +10,6 @@ namespace SportMonks\API\Resources;
 
 
 use SportMonks\API\Traits\Resource\Find;
-use SportMonks\API\Traits\Resource\FindAll;
 use SportMonks\API\Traits\Resource\NextPage;
 use SportMonks\API\Traits\Utility\InitTrait;
 
@@ -19,7 +18,6 @@ use SportMonks\API\Traits\Utility\InitTrait;
  * @package SportMonks\API\Resources
  *
  * @method FixturesBetween between()
- * @method FixturesMulti multi()
  * @method FixturesDate date()
  */
 class Fixtures extends ResourceAbstract
@@ -41,10 +39,29 @@ class Fixtures extends ResourceAbstract
     }
 
     /**
+     * @param array $idCollection
+     * @param array $params
+     *
+     * @return null | array
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
+     */
+    public function multi($idCollection, $params = [])
+    {
+        $this->setRoute('fixtures_multi', 'fixtures/multi/{ids}}');
+        $this->setRouteParameters([
+            'ids' => implode(',', $idCollection)
+        ]);
+        $params = array_merge($params, self::$param);
+
+        return $this->traitFind(null, $params, 'fixtures_multi');
+    }
+
+    /**
      * @param integer $fixtureId
      * @param array $params
      *
      * @return array|null|\stdClass
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
      */
     public function commentaries($fixtureId, array $params = [])
     {
@@ -61,6 +78,7 @@ class Fixtures extends ResourceAbstract
      * @param array $params
      *
      * @return array|null|\stdClass
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
      */
     public function videoHighlights($fixtureId, array $params = [])
     {
@@ -77,6 +95,7 @@ class Fixtures extends ResourceAbstract
      * @param array $params
      *
      * @return array|null|\stdClass
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
      */
     public function tvStations($fixtureId, array $params = [])
     {
@@ -88,6 +107,12 @@ class Fixtures extends ResourceAbstract
         return $this->traitFind($fixtureId, $params, 'tvStations');
     }
 
+    /**
+     * @param $fixtureId
+     * @param array $params
+     * @return array|null|\stdClass
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
+     */
     public function odds($fixtureId, array $params = [])
     {
         $this->setRoute('odds_by_bookmaker', 'odds/fixture/{fixture_id}');
@@ -98,6 +123,13 @@ class Fixtures extends ResourceAbstract
         return $this->traitFind($fixtureId, $params, 'odds_by_bookmaker');
     }
 
+    /**
+     * @param $fixtureId
+     * @param $bookmakerId
+     * @param array $params
+     * @return array|null|\stdClass
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
+     */
     public function oddsByBookmaker($fixtureId, $bookmakerId, array $params = [])
     {
         $this->setRoute('odds_by_bookmaker', 'odds/fixture/{fixture_id}/bookmaker/{bookmaker_id}');
@@ -109,6 +141,13 @@ class Fixtures extends ResourceAbstract
         return $this->traitFind($fixtureId, $params, 'odds_by_bookmaker');
     }
 
+    /**
+     * @param $fixtureId
+     * @param $marketId
+     * @param array $params
+     * @return array|null|\stdClass
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
+     */
     public function oddsByMarket($fixtureId, $marketId, array $params = [])
     {
         $this->setRoute('odds_by_market', 'odds/fixture/{fixture_id}/market/{market_id}');
@@ -120,6 +159,12 @@ class Fixtures extends ResourceAbstract
         return $this->traitFind($fixtureId, $params, 'odds_by_market');
     }
 
+    /**
+     * @param $fixtureId
+     * @param array $params
+     * @return array|null|\stdClass
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
+     */
     public function oddsInPlay($fixtureId, array $params = [])
     {
         $this->setRoute('odds_in_play', 'odds/inplay/fixture/{fixture_id}');
@@ -130,11 +175,13 @@ class Fixtures extends ResourceAbstract
         return $this->traitFind($fixtureId, $params, 'odds_in_play');
     }
 
+    /**
+     * @return array
+     */
     public static function getValidEndpoints()
     {
         return array_merge(parent::getValidEndpoints(), [
             'between' => FixturesBetween::class,
-            'multi' => FixturesMulti::class,
             'date' => FixturesDate::class
         ]);
     }
