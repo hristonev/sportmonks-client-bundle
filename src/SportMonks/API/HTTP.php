@@ -14,12 +14,15 @@ use GuzzleHttp\Psr7\Request;
 class HTTP
 {
     protected $requestHeaders;
+
     /**
      * @param HTTPClient $client
      * @param string $endpoint
      * @param array $options
      *
      * @return \stdClass | null
+     * @throws Exceptions\AuthException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function send(HTTPClient $client, $endpoint, $options)
     {

@@ -13,10 +13,10 @@ use SportMonks\API\Traits\Resource\Find;
 use SportMonks\API\Traits\Utility\InitTrait;
 
 /**
- * Class Squad
+ * Class Rounds
  * @package SportMonks\API\Resources
  */
-class Squad extends ResourceAbstract
+class Standings extends ResourceAbstract
 {
     use InitTrait;
 
@@ -26,19 +26,17 @@ class Squad extends ResourceAbstract
 
     /**
      * @param integer $seasonId
-     * @param integer $teamId
      * @param array $params
      * @return array|null
      * @throws \SportMonks\API\Exceptions\MissingParameterException
      */
-    public function getBySeasonAndTeam($seasonId, $teamId, $params = [])
-    {
-        $this->setRoute('squad_by_season_team', 'squad/season/{season_id}/team/{team_id}');
-        $this->setRouteParameters([
-            'season_id' => $seasonId,
-            'team_id' => $teamId
-        ]);
-
-        return $this->traitFind(null, $params, 'squad_by_season_team');
-    }
+	public function getBySeason($seasonId, $params = [])
+	{
+		$this->setRoute('standings_by_season', 'standings/season/{season_id}');
+			$this->setRouteParameters([
+				'season_id' => $seasonId
+			]);
+	
+			return $this->traitFind(null, $params, 'standings_by_season');
+	}
 }

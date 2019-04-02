@@ -23,11 +23,12 @@ class Rounds extends ResourceAbstract
     use Find {
         find as traitFind;
     }
-	
-	/**
+
+    /**
      * @param integer $seasonId
      * @param array $params
      * @return array|null
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
      */
 	public function getBySeason($seasonId, $params = [])
 	{

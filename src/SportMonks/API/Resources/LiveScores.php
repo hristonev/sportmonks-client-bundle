@@ -27,6 +27,11 @@ class LiveScores extends ResourceAbstract
 
     use NextPage;
 
+    /**
+     * @param array $params
+     * @return array|null|\stdClass
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
+     */
     public function today($params = [])
     {
         $this->setRoute('live_scores', 'livescores');
@@ -34,6 +39,11 @@ class LiveScores extends ResourceAbstract
         return $this->traitFind(null, $params, 'live_scores');
     }
 
+    /**
+     * @param array $params
+     * @return array|null|\stdClass
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
+     */
     public function inPlay($params = [])
     {
         $this->setRoute('live_scores_now', 'livescores/now');

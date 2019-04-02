@@ -25,6 +25,8 @@ use SportMonks\API\Resources\Players;
 use SportMonks\API\Resources\Rounds;
 use SportMonks\API\Resources\Seasons;
 use SportMonks\API\Resources\Squad;
+use SportMonks\API\Resources\Stages;
+use SportMonks\API\Resources\Standings;
 use SportMonks\API\Resources\Teams;
 use SportMonks\API\Resources\Venues;
 use SportMonks\API\Traits\Utility\InitTrait;
@@ -49,6 +51,8 @@ use SportMonks\API\Utilities\Auth;
  * @method Rounds rounds()
  * @method Squad squad()
  * @method Coaches coaches()
+ * @method Stages stages()
+ * @method Standings standings()
  */
 class HTTPClient extends HTTP
 {
@@ -146,7 +150,9 @@ class HTTPClient extends HTTP
             'players' => Players::class,
             'rounds' => Rounds::class,
             'squad' => Squad::class,
-            'coaches' => Coaches::class
+            'coaches' => Coaches::class,
+            'stages' => Stages::class,
+            'standings' => Standings::class,
         ];
     }
 

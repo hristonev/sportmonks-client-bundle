@@ -30,6 +30,7 @@ class Teams extends ResourceAbstract
      * @param array $params
      *
      * @return array|null|\stdClass
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
      */
     public function find($id, $includeStats = false, array $params = [])
     {
@@ -49,6 +50,7 @@ class Teams extends ResourceAbstract
      * @param array $params
      *
      * @return array|null|\stdClass
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
      */
     public function season($seasonId, array $params = [])
     {

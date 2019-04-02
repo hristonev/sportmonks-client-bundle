@@ -29,6 +29,7 @@ class FixturesDate extends ResourceAbstract
      * @param array $params
      *
      * @return null|\stdClass
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
      */
     public function day(\DateTime $date, $params = [])
     {

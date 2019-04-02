@@ -34,6 +34,7 @@ class FixturesBetween extends ResourceAbstract
      * @param array $params
      *
      * @return null | array
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
      */
     public function period(\DateTime $from, \DateTime $to, $teamId = null, $params = [])
     {

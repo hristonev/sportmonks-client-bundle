@@ -36,6 +36,7 @@ class Seasons extends ResourceAbstract
      * @param array $params
      *
      * @return array|null|\stdClass
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
      */
     public function find($id, $includeResults = false, array $params = [])
     {
@@ -55,6 +56,7 @@ class Seasons extends ResourceAbstract
      * @param array $params
      *
      * @return array|null|\stdClass
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
      */
     public function standings($seasonId, array $params = [])
     {
@@ -71,6 +73,7 @@ class Seasons extends ResourceAbstract
      * @param array $params
      *
      * @return array|null|\stdClass
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
      */
     public function standingsLive($seasonId, array $params = [])
     {
@@ -87,6 +90,7 @@ class Seasons extends ResourceAbstract
      * @param array $params
      *
      * @return array|null|\stdClass
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
      */
     public function topScorers($seasonId, array $params = [])
     {
@@ -103,6 +107,7 @@ class Seasons extends ResourceAbstract
      * @param array $params
      *
      * @return array|null|\stdClass
+     * @throws \SportMonks\API\Exceptions\MissingParameterException
      */
     public function rounds($seasonId, array $params = [])
     {
