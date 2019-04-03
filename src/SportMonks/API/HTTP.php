@@ -9,6 +9,7 @@
 namespace SportMonks\API;
 
 
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 
 class HTTP
@@ -59,9 +60,15 @@ class HTTP
         if(array_key_exists('queryParams', $options) && array_key_exists('query', $options['queryParams'])){
             $requestOptions['query'] = array_merge($requestOptions['query'], $options['queryParams']['query']);
         }
-
-        $response = $client->guzzle->send($request, $requestOptions);
-
+        try {
+            $response = $client->guzzle->send($request, $requestOptions);
+        }catch (RequestException $e){
+            $resp = new \stdClass();
+            $resp->code = $e->getCode();
+            $resp->error = true;
+            $resp->message = $e->getMessage();
+            return $resp;
+        }
         $this->requestHeaders = $response->getHeaders();
 
         return json_decode($response->getBody());

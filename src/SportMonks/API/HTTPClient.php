@@ -223,6 +223,7 @@ class HTTPClient extends HTTP
      * @param $method
      * @param array $options
      *
+     * @throws Exceptions\AuthException
      * @internal param Auth $auth
      */
     public function setAuth($method, array $options)
@@ -235,6 +236,8 @@ class HTTPClient extends HTTP
      * @param array $queryParams
      *
      * @return \stdClass | null
+     * @throws Exceptions\AuthException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function get($endpoint, $queryParams = [])
     {
